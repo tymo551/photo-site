@@ -41,7 +41,7 @@ a:active {
 .top-nav {
   position: relative;
   width: 100%;
-  padding: 40px 60px 20px 60px;
+  padding: 80px 60px 80px 60px;
   display: flex;
   align-items: center;
 }
