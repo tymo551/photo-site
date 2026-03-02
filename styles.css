@@ -17,6 +17,9 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   -webkit-touch-callout: none;
+    -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 * {
