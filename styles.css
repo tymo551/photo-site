@@ -178,16 +178,19 @@ a:active {
 .portrait {
   aspect-ratio: 2 / 3;
   overflow: hidden;
+  position: relative;
 }
 
 .square {
   aspect-ratio: 1 / 1;
   overflow: hidden;
+  position: relative;
 }
 
 .wide {
   aspect-ratio: 16 / 9;
   overflow: hidden;
+  position: relative;
 }
 
 /* IMAGE BEHAVIOR */
@@ -266,6 +269,28 @@ a:active {
   .dropdown-menu {
     display: none;
   }
+}
+
+/* =========================================
+   MID DESKTOP COLLAPSE
+   (Split screen / small laptop window)
+========================================= */
+@media (max-width: 1100px) and (min-width: 901px) {
+
+  .three-layout,
+  .three-layout.inverted {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .three-layout .portrait,
+  .three-layout.inverted .portrait,
+  .three-layout .square,
+  .three-layout.inverted .square {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
 }
 
 /* =========================================
