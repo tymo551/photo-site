@@ -285,3 +285,17 @@ body {
     font-size: 42px;
   }
 }
+/* =========================
+   IMAGE PROTECTION (LIGHT FRICTION)
+========================= */
+
+img {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: auto;
+}
+
+body {
+  -webkit-touch-callout: none;
+}
