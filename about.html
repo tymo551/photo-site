@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>About — Your Name</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <div class="top-nav">
+    <a href="index.html" class="site-title">Your Name.</a>
+
+    <div class="desktop-nav">
+      <a href="about.html">about me</a>
+      <a href="contact.html">contact</a>
+    </div>
+
+    <div class="menu-icon" id="menuToggle">⌄</div>
+  </div>
+
+  <div class="dropdown-menu" id="dropdownMenu">
+    <a href="about.html">about me</a>
+    <a href="contact.html">contact</a>
+  </div>
+
+  <main class="content-page">
+    <div class="content-wrapper">
+      <h1>About Me</h1>
+      <p>
+        Short introduction about your photography practice.
+        You can describe your style, your vision, your background,
+        what inspires you, and what kind of projects you take on.
+      </p>
+
+      <p>
+        Keep it concise. Minimal sites benefit from restraint.
+      </p>
+    </div>
+  </main>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    menuToggle.addEventListener('click', () => {
+      dropdownMenu.classList.toggle('open');
+      menuToggle.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

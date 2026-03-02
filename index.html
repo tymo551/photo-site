@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>w.raw studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Photography portfolio">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- =========================
+       TOP NAVIGATION
+  ========================== -->
+  <div class="top-nav">
+    <a href="index.html" class="site-title">w.raw studio</a>
+
+    <div class="desktop-nav">
+      <a href="about.html">about me</a>
+      <a href="contact.html">contact</a>
+    </div>
+
+    <div class="menu-icon" id="menuToggle">⌄</div>
+  </div>
+
+  <div class="dropdown-menu" id="dropdownMenu">
+    <a href="about.html">about me</a>
+    <a href="contact.html">contact</a>
+  </div>
+
+
+  <!-- =========================
+       PHOTO FEED
+  ========================== -->
+  <main class="photo-feed">
+
+    <!-- ROW 1 -->
+    <section class="row three-layout">
+      <div class="portrait shuffle"
+           data-images="images/p1.jpg,images/p2.jpg,images/p3.jpg">
+
+        <img class="active" src="images/p1.jpg" alt="">
+        <img src="images/p2.jpg" alt="">
+
+      </div>
+
+      <div class="square">
+        <img src="images/s1.jpg" alt="">
+      </div>
+
+      <div class="square">
+        <img src="images/s2.jpg" alt="">
+      </div>
+    </section>
+
+
+    <!-- ROW 2 -->
+    <section class="row single-layout">
+      <div class="wide">
+        <img src="images/w1.jpg" alt="">
+      </div>
+    </section>
+
+
+    <!-- ROW 3 (INVERTED) -->
+    <section class="row three-layout inverted">
+
+      <div class="square top-square">
+        <img src="images/s3.jpg" alt="">
+      </div>
+
+      <div class="square bottom-square">
+        <img src="images/s4.jpg" alt="">
+      </div>
+
+      <div class="portrait shuffle"
+           data-images="images/image1.jpeg,images/image2.jpeg,images/image3.jpeg">
+
+        <img class="active" src="images/image1.jpeg" alt="">
+        <img src="images/image2.jpeg" alt="">
+
+      </div>
+
+    </section>
+
+
+    <!-- ROW 4 -->
+    <section class="row single-layout">
+      <div class="wide">
+        <img src="images/w2.jpg" alt="">
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       SCRIPTS
+  ========================== -->
+  <script>
+
+    /* MENU TOGGLE */
+    const menuToggle = document.getElementById('menuToggle');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        dropdownMenu.classList.toggle('open');
+        menuToggle.classList.toggle('open');
+      });
+    }
+
+    /* SHUFFLE CROSSFADE (SOFT RANDOM ORDER) */
+    const shufflePanels = document.querySelectorAll('.shuffle');
+
+    shufflePanels.forEach(panel => {
+      let images = panel.dataset.images.split(',');
+      const imgs = panel.querySelectorAll('img');
+
+      // Shuffle once on load
+      images = images.sort(() => Math.random() - 0.5);
+
+      let currentIndex = 0;
+      let visibleIndex = 0;
+
+      setInterval(() => {
+
+        const nextIndex = (currentIndex + 1) % images.length;
+
+        const hiddenImg = imgs[visibleIndex === 0 ? 1 : 0];
+        hiddenImg.src = images[nextIndex];
+
+        hiddenImg.classList.add('active');
+        imgs[visibleIndex].classList.remove('active');
+
+        visibleIndex = visibleIndex === 0 ? 1 : 0;
+        currentIndex = nextIndex;
+
+      }, 6000);
+    });
+
+  </script>
+
+</body>
+</html>

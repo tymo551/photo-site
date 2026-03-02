@@ -1,0 +1,287 @@
+/* =========================================
+   COLOR SYSTEM
+========================================= */
+:root {
+  --bg-color: #0f0f0f;
+  --text-color: #f5f5f5;
+  --accent-color: #b5b5b5;
+}
+
+/* =========================================
+   BASE
+========================================= */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* =========================================
+   RESET
+========================================= */
+* {
+  box-sizing: border-box;
+}
+
+/* =========================================
+   TOP NAVIGATION
+========================================= */
+.top-nav {
+  position: relative;
+  width: 100%;
+  padding: 40px 60px 20px 60px;
+  display: flex;
+  align-items: center;
+}
+
+/* Centered site title */
+.site-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Playfair Display', serif;
+  font-size: 58px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+/* Desktop nav (stacked vertically on right) */
+.desktop-nav {
+  margin-left: auto;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  text-align: right;
+}
+
+.desktop-nav a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 16px;
+  letter-spacing: 2px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.desktop-nav a:hover,
+.dropdown-menu a:hover {
+  color: var(--accent-color);
+}
+
+/* Menu icon (mobile) */
+.menu-icon {
+  margin-left: auto;
+  font-size: 28px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.menu-icon.open {
+  transform: rotate(180deg);
+}
+
+/* =========================================
+   MOBILE DROPDOWN
+========================================= */
+.dropdown-menu {
+  padding: 0 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.desktop-nav a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 16px;
+  letter-spacing: 2px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.dropdown-menu.open {
+  max-height: 300px;
+  margin-bottom: 40px;
+}
+
+/* =========================================
+   EDITORIAL PHOTO SYSTEM
+========================================= */
+.photo-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 140px;
+  padding: 0 60px 140px 60px;
+
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.row {
+  display: grid;
+  gap: 40px;
+}
+
+/* THREE LAYOUT NORMAL */
+.three-layout {
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+}
+
+.three-layout .portrait {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+.three-layout .square:nth-child(2) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.three-layout .square:nth-child(3) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* THREE LAYOUT INVERTED */
+.three-layout.inverted {
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto auto;
+}
+
+.three-layout.inverted .portrait {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.three-layout.inverted .top-square {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.three-layout.inverted .bottom-square {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+/* RATIOS */
+.portrait {
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+}
+
+.square {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.wide {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+/* IMAGE BEHAVIOR */
+.photo-feed img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* =========================================
+   SHUFFLE CROSSFADE (STABLE VERSION)
+========================================= */
+
+.shuffle {
+  position: relative;
+}
+
+.shuffle img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.shuffle img.active {
+  opacity: 1;
+}
+
+/* =========================================
+   CONTENT PAGES
+========================================= */
+.content-page {
+  padding: 60px;
+}
+
+.content-wrapper {
+  max-width: 700px;
+}
+
+.content-wrapper h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  margin-bottom: 40px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.content-wrapper p {
+  font-size: 17px;
+  line-height: 1.8;
+  letter-spacing: 0.3px;
+}
+
+/* =========================================
+   DESKTOP MODE
+========================================= */
+@media (min-width: 900px) {
+
+  .menu-icon {
+    display: none;
+  }
+
+  .desktop-nav {
+    display: flex;
+  }
+
+  .dropdown-menu {
+    display: none;
+  }
+}
+
+/* =========================================
+   MOBILE STACKING
+========================================= */
+@media (max-width: 900px) {
+
+  .row {
+    grid-template-columns: 1fr !important;
+  }
+
+  .three-layout .portrait,
+  .three-layout.inverted .portrait {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .photo-feed {
+    gap: 80px;
+    padding: 0 30px 80px 30px;
+  }
+
+  .site-title {
+    font-size: 42px;
+  }
+}
