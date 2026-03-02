@@ -105,57 +105,75 @@
   <!-- =========================
        SCRIPTS
   ========================== -->
-  <script>
+ <script>
 
-    /* MENU TOGGLE */
-    const menuToggle = document.getElementById('menuToggle');
-    const dropdownMenu = document.getElementById('dropdownMenu');
+/* MENU TOGGLE */
+const menuToggle = document.getElementById('menuToggle');
+const dropdownMenu = document.getElementById('dropdownMenu');
 
-    if (menuToggle) {
-      menuToggle.addEventListener('click', () => {
-        dropdownMenu.classList.toggle('open');
-        menuToggle.classList.toggle('open');
-      });
-    }
+if (menuToggle) {
+  menuToggle.addEventListener('click', () => {
+    dropdownMenu.classList.toggle('open');
+    menuToggle.classList.toggle('open');
+  });
+}
 
-    /* SHUFFLE CROSSFADE (SOFT RANDOM ORDER) */
-    const shufflePanels = document.querySelectorAll('.shuffle');
-
-    shufflePanels.forEach(panel => {
-      let images = panel.dataset.images.split(',');
-      const imgs = panel.querySelectorAll('img');
-
-      // Shuffle once on load
-      images = images.sort(() => Math.random() - 0.5);
-
-      let currentIndex = 0;
-      let visibleIndex = 0;
-
-      setInterval(() => {
-
-        const nextIndex = (currentIndex + 1) % images.length;
-
-        const hiddenImg = imgs[visibleIndex === 0 ? 1 : 0];
-        hiddenImg.src = images[nextIndex];
-
-        hiddenImg.classList.add('active');
-        imgs[visibleIndex].classList.remove('active');
-
-        visibleIndex = visibleIndex === 0 ? 1 : 0;
-        currentIndex = nextIndex;
-
-      }, 6000);
-    });
 
 /* =========================
-   DISABLE RIGHT CLICK
+   STABLE SHUFFLE (CLEAN VERSION)
 ========================= */
 
+const shufflePanels = document.querySelectorAll('.shuffle');
+
+shufflePanels.forEach((panel, panelIndex) => {
+
+  let images = panel.dataset.images.split(',');
+
+  // Shuffle once on load
+  images = images.sort(() => Math.random() - 0.5);
+
+  const imgs = panel.querySelectorAll('img');
+
+  let currentIndex = 0;
+  let visibleIndex = 0;
+
+  const baseDelay = 4800;        // slightly shorter than 6000
+  const stagger = panelIndex * 800;
+
+  setTimeout(() => {
+
+    setInterval(() => {
+
+      const nextIndex = (currentIndex + 1) % images.length;
+      const nextSrc = images[nextIndex];
+
+      const hiddenImg = imgs[visibleIndex === 0 ? 1 : 0];
+
+      // Preload next image quietly
+      const preload = new Image();
+      preload.src = nextSrc;
+
+      hiddenImg.src = nextSrc;
+
+      hiddenImg.classList.add('active');
+      imgs[visibleIndex].classList.remove('active');
+
+      visibleIndex = visibleIndex === 0 ? 1 : 0;
+      currentIndex = nextIndex;
+
+    }, baseDelay);
+
+  }, stagger);
+
+});
+
+
+/* DISABLE RIGHT CLICK */
 document.addEventListener("contextmenu", function (e) {
   e.preventDefault();
 });
 
-  </script>
+</script>
 
 </body>
 </html>

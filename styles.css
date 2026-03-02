@@ -16,23 +16,17 @@ body {
   font-weight: 300;
   background-color: var(--bg-color);
   color: var(--text-color);
+  -webkit-touch-callout: none;
 }
 
 * {
+  box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
 }
 
 /* =========================================
-   RESET
-========================================= */
-* {
-  box-sizing: border-box;
-}
-
-/* =========================
    STRONG MOBILE LINK RESET
-========================= */
-
+========================================= */
 a,
 a:visited,
 a:hover,
@@ -65,7 +59,7 @@ a:active {
   color: var(--text-color);
 }
 
-/* Desktop nav (stacked vertically on right) */
+/* Desktop nav */
 .desktop-nav {
   margin-left: auto;
   display: none;
@@ -75,12 +69,11 @@ a:active {
 }
 
 .desktop-nav a {
-  text-decoration: none;
-  color: var(--text-color);
   font-size: 16px;
   letter-spacing: 2px;
   font-weight: 400;
   text-transform: uppercase;
+  transition: color 0.3s ease;
 }
 
 .desktop-nav a:hover,
@@ -111,16 +104,7 @@ a:active {
 
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease;
-}
-
-.desktop-nav a {
-  text-decoration: none;
-  color: var(--text-color);
-  font-size: 16px;
-  letter-spacing: 2px;
-  font-weight: 400;
-  text-transform: uppercase;
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dropdown-menu.open {
@@ -136,7 +120,6 @@ a:active {
   flex-direction: column;
   gap: 140px;
   padding: 0 60px 140px 60px;
-
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -213,9 +196,8 @@ a:active {
 }
 
 /* =========================================
-   SHUFFLE CROSSFADE (STABLE VERSION)
+   SHUFFLE CROSSFADE — REFINED
 ========================================= */
-
 .shuffle {
   position: relative;
 }
@@ -226,12 +208,18 @@ a:active {
   width: 100%;
   height: 100%;
   object-fit: cover;
+
   opacity: 0;
-  transition: opacity 1s ease;
+  transform: scale(1.01);
+
+  transition:
+    opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 6s ease-out;
 }
 
 .shuffle img.active {
   opacity: 1;
+  transform: scale(1);
 }
 
 /* =========================================
@@ -298,20 +286,17 @@ a:active {
   }
 
   .site-title {
-    font-size: 42px;
+    font-size: 38px;
+    line-height: 1.1;
   }
 }
-/* =========================
-   IMAGE PROTECTION (LIGHT FRICTION)
-========================= */
 
+/* =========================================
+   IMAGE PROTECTION (LIGHT FRICTION)
+========================================= */
 img {
   user-select: none;
   -webkit-user-select: none;
   -webkit-user-drag: none;
   pointer-events: auto;
-}
-
-body {
-  -webkit-touch-callout: none;
 }
