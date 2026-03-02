@@ -17,7 +17,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   -webkit-touch-callout: none;
-    -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
@@ -28,7 +28,7 @@ body {
 }
 
 /* =========================================
-   STRONG MOBILE LINK RESET
+   LINK RESET
 ========================================= */
 a,
 a:visited,
@@ -44,12 +44,11 @@ a:active {
 .top-nav {
   position: relative;
   width: 100%;
-  padding: 80px 60px 80px 60px;
+  padding: 80px 60px;
   display: flex;
   align-items: center;
 }
 
-/* Centered site title */
 .site-title {
   position: absolute;
   left: 50%;
@@ -58,11 +57,9 @@ a:active {
   font-size: 58px;
   font-weight: 400;
   letter-spacing: 1px;
-  text-decoration: none;
   color: var(--text-color);
 }
 
-/* Desktop nav */
 .desktop-nav {
   margin-left: auto;
   display: none;
@@ -84,7 +81,6 @@ a:active {
   color: var(--accent-color);
 }
 
-/* Menu icon (mobile) */
 .menu-icon {
   margin-left: auto;
   font-size: 28px;
@@ -104,7 +100,6 @@ a:active {
   display: flex;
   flex-direction: column;
   gap: 30px;
-
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
@@ -116,13 +111,13 @@ a:active {
 }
 
 /* =========================================
-   EDITORIAL PHOTO SYSTEM
+   PHOTO SYSTEM
 ========================================= */
 .photo-feed {
   display: flex;
   flex-direction: column;
   gap: 140px;
-  padding: 0 60px 140px 60px;
+  padding: 0 60px 140px;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -132,7 +127,7 @@ a:active {
   gap: 40px;
 }
 
-/* THREE LAYOUT NORMAL */
+/* THREE LAYOUT */
 .three-layout {
   grid-template-columns: 2fr 1fr;
   grid-template-rows: auto auto;
@@ -153,7 +148,7 @@ a:active {
   grid-row: 2;
 }
 
-/* THREE LAYOUT INVERTED */
+/* INVERTED */
 .three-layout.inverted {
   grid-template-columns: 1fr 2fr;
   grid-template-rows: auto auto;
@@ -175,25 +170,18 @@ a:active {
 }
 
 /* RATIOS */
-.portrait {
-  aspect-ratio: 2 / 3;
-  overflow: hidden;
-  position: relative;
-}
-
-.square {
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  position: relative;
-}
-
+.portrait,
+.square,
 .wide {
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
 }
 
-/* IMAGE BEHAVIOR */
+.portrait { aspect-ratio: 2 / 3; }
+.square   { aspect-ratio: 1 / 1; }
+.wide     { aspect-ratio: 16 / 9; }
+
+/* IMAGES */
 .photo-feed img {
   width: 100%;
   height: 100%;
@@ -201,9 +189,7 @@ a:active {
   display: block;
 }
 
-/* =========================================
-   SHUFFLE CROSSFADE — REFINED
-========================================= */
+/* SHUFFLE */
 .shuffle {
   position: relative;
 }
@@ -211,13 +197,8 @@ a:active {
 .shuffle img {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-
   opacity: 0;
   transform: scale(1.01);
-
   transition:
     opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1),
     transform 6s ease-out;
@@ -229,51 +210,16 @@ a:active {
 }
 
 /* =========================================
-   CONTENT PAGES
-========================================= */
-.content-page {
-  padding: 60px;
-}
-
-.content-wrapper {
-  max-width: 700px;
-}
-
-.content-wrapper h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 48px;
-  margin-bottom: 40px;
-  font-weight: 400;
-  letter-spacing: 0.5px;
-}
-
-.content-wrapper p {
-  font-size: 17px;
-  line-height: 1.8;
-  letter-spacing: 0.3px;
-}
-
-/* =========================================
-   DESKTOP MODE
+   DESKTOP NAV VISIBILITY
 ========================================= */
 @media (min-width: 900px) {
-
-  .menu-icon {
-    display: none;
-  }
-
-  .desktop-nav {
-    display: flex;
-  }
-
-  .dropdown-menu {
-    display: none;
-  }
+  .menu-icon { display: none; }
+  .desktop-nav { display: flex; }
+  .dropdown-menu { display: none; }
 }
 
 /* =========================================
    MID DESKTOP COLLAPSE
-   (Split screen / small laptop window)
 ========================================= */
 @media (max-width: 1100px) and (min-width: 901px) {
 
@@ -283,14 +229,11 @@ a:active {
     grid-template-rows: auto;
   }
 
-  .three-layout .portrait,
-  .three-layout.inverted .portrait,
-  .three-layout .square,
-  .three-layout.inverted .square {
+  .three-layout *,
+  .three-layout.inverted * {
     grid-column: auto !important;
     grid-row: auto !important;
   }
-
 }
 
 /* =========================================
@@ -298,19 +241,21 @@ a:active {
 ========================================= */
 @media (max-width: 900px) {
 
-  .row {
-    grid-template-columns: 1fr !important;
+  .three-layout,
+  .three-layout.inverted {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
   }
 
-  .three-layout .portrait,
-  .three-layout.inverted .portrait {
-    grid-column: auto;
-    grid-row: auto;
+  .three-layout *,
+  .three-layout.inverted * {
+    grid-column: auto !important;
+    grid-row: auto !important;
   }
 
   .photo-feed {
     gap: 80px;
-    padding: 0 30px 80px 30px;
+    padding: 0 30px 80px;
   }
 
   .site-title {
@@ -320,7 +265,7 @@ a:active {
 }
 
 /* =========================================
-   IMAGE PROTECTION (LIGHT FRICTION)
+   IMAGE PROTECTION
 ========================================= */
 img {
   user-select: none;
