@@ -7,7 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="format-detection" content="telephone=no">
   <meta name="description" content="Photography portfolio">
-
+  <meta property="og:title" content="w.raw studio">
+<meta property="og:description" content="Photography portfolio">
+<meta property="og:image" content="images/preview.jpg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="w.raw studio">
+<meta property="og:url" content="https://wrawstudio.com">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico">
+<link rel="canonical" href="https://wrawstudio.com">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 
@@ -21,7 +29,9 @@
        TOP NAVIGATION
   ========================== -->
   <div class="top-nav">
-    <a href="index.html" class="site-title">w.raw studio</a>
+    <a href="index.html" class="site-title">
+  <img src="images/logo.svg" alt="w.raw studio">
+</a>
 
     <div class="desktop-nav">
       <a href="about.html">about us</a>
@@ -37,88 +47,81 @@
   </div>
 
 
-  <!-- =========================
+<!-- =========================
        PHOTO FEED
-  ========================== -->
-  <main class="photo-feed">
+========================== -->
+<main class="photo-feed">
 
-    <!-- ROW 1 -->
-    <section class="row three-layout">
-      <div class="portrait shuffle"
-           data-images="images/p1.jpg,images/p2.jpg,images/p3.jpg">
+  <!-- ROW 1 : WIDE SHUFFLE -->
+  <section class="row single-layout">
+    <div class="wide shuffle"
+         data-images="images/image1.jpg,images/image2.jpg,images/w3.jpg">
 
-        <img class="active" src="images/p1.jpg" alt="">
-        <img src="images/p2.jpg" alt="">
+      <img class="active" src="images/image1.jpg" alt="">
+      <img src="images/image2.jpg" alt="">
 
-      </div>
-
-      <div class="square">
-        <img src="images/s1.jpg" alt="">
-      </div>
-
-      <div class="square">
-        <img src="images/s2.jpg" alt="">
-      </div>
-    </section>
+    </div>
+  </section>
 
 
-    <!-- ROW 2 -->
-    <section class="row single-layout">
-      <div class="wide">
-        <img src="images/image4.jpg" alt="">
-      </div>
-    </section>
+  <!-- ROW 2 : GRID WITH VERTICAL SHUFFLE -->
+  <section class="row three-layout">
+
+    <div class="square">
+      <img src="images/s1.jpg" alt="">
+    </div>
+
+    <div class="square">
+      <img src="images/s2.jpg" alt="">
+    </div>
+
+    <div class="portrait shuffle"
+         data-images="images/p1.jpg,images/p2.jpg,images/p3.jpg">
+
+      <img class="active" src="images/p1.jpg" alt="">
+      <img src="images/p2.jpg" alt="">
+
+    </div>
+
+  </section>
 
 
-    <!-- ROW 3 (INVERTED) -->
-    <section class="row three-layout inverted">
-
-      <div class="square top-square">
-        <img src="images/s3.jpg" alt="">
-      </div>
-
-      <div class="square bottom-square">
-        <img src="images/s4.jpg" alt="">
-      </div>
-
-      <div class="portrait shuffle"
-           data-images="images/image1.jpeg,images/image2.jpeg,images/image3.jpeg">
-
-        <img class="active" src="images/image1.jpeg" alt="">
-        <img src="images/image2.jpeg" alt="">
-
-      </div>
-
-    </section>
+  <!-- ROW 3 : STATIC WIDE -->
+  <section class="row single-layout">
+    <div class="wide">
+      <img src="images/image4.jpg" alt="">
+    </div>
+  </section>
 
 
-    <!-- ROW 4 -->
-    <section class="row single-layout">
-      <div class="wide">
-        <img src="images/w2.jpg" alt="">
-      </div>
-    </section>
+  <!-- ROW 4 : STATIC GRID -->
+  <section class="row three-layout">
 
-  </main>
+    <div class="square">
+      <img src="images/s3.jpg" alt="">
+    </div>
 
+    <div class="square">
+      <img src="images/s4.jpg" alt="">
+    </div>
 
-  <!-- =========================
-       SCRIPTS
-  ========================== -->
- <script>
+    <div class="portrait">
+      <img src="images/p4.jpg" alt="">
+    </div>
 
-/* MENU TOGGLE */
-const menuToggle = document.getElementById('menuToggle');
-const dropdownMenu = document.getElementById('dropdownMenu');
+  </section>
 
-if (menuToggle) {
-  menuToggle.addEventListener('click', () => {
-    dropdownMenu.classList.toggle('open');
-    menuToggle.classList.toggle('open');
-  });
-}
+</main>
 
+<script>
 
+const menuToggle = document.getElementById("menuToggle");
+const dropdownMenu = document.getElementById("dropdownMenu");
+
+menuToggle.addEventListener("click", () => {
+  menuToggle.classList.toggle("open");
+  dropdownMenu.classList.toggle("open");
+});
 /* =========================
    STABLE SHUFFLE (CLEAN VERSION)
 ========================= */
