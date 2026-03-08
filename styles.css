@@ -56,7 +56,7 @@ a:active {
 }
 
 .site-title img {
-  height: 58px;
+  height: 38px;
   width: auto;
   display: block;
 }
@@ -105,6 +105,12 @@ a:active {
   transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.dropdown-menu a {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
 .dropdown-menu.open {
   max-height: 300px;
   margin-bottom: 40px;
@@ -233,16 +239,24 @@ a:active {
 /* CONTENT PAGE TYPOGRAPHY */
 
 .content-wrapper h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 400;
-  font-size: 48px;
+  font-size: 40px;
+  letter-spacing: 1px;
   margin-bottom: 30px;
 }
 
 .content-wrapper p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
   font-size: 16px;
   line-height: 1.7;
-  color: var(--text-color);
+  letter-spacing: 2px;
+}
+
+.contact-page .content-wrapper {
+  text-align: center;
+  margin: 0 auto;
 }
 /* =========================================
    DESKTOP NAV VISIBILITY
